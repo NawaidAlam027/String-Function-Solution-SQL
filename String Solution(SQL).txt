@@ -1,0 +1,27 @@
+/*S.8*/    select upper(first_name) as FIRST_NAME from employees;
+
+   
+
+/*S.10*/   select lower(SUBSTRING(first_name,0,2))+lower(last_name)+'@systechuna.com'
+           as email_address from employees;
+
+/*S.11*/   select e.first_name,j.job_title,l.city from employees e 
+           inner join departments d on d.department_id=e.department_id
+           inner join locations l on l.location_id=d.location_id
+           inner join jobs j on j.job_id=e.job_id
+           where city='Toronto';
+
+/*S.12*/   select e.first_name,d.department_name,l.city from employees e
+           inner join departments d on d.department_id=e.department_id
+           inner join locations l on l.location_id=d.location_id
+           where city='Toronto';
+
+
+/*S.13*/   select first_name+'  '+last_name as Name,salary from employees
+           where salary in
+           (select MIN(salary) from employees);
+
+/*S.14*/   select first_name+'  '+last_name as Name,salary from employees
+           where salary not in
+          (select MIN(salary) from employees);
+
